@@ -1,5 +1,1 @@
-# Files uploaded by users
-documents/*
-jobsearch/media/documents/*
-#temporary storage for application Files
-empty/*
+#No files needed to be ignored at this time, there are some empty directories that needed to be added however
