@@ -1,0 +1,33 @@
+{% extends "main_template.html" %}
+{% block title %}Applications{% endblock %}
+{% block content %}
+  <h2>Past Applications</h2>
+  <p>Here is a list of all the jobs you have applied for:</p> 
+
+	{% for a in applications %}
+	{% if a.id != none %}
+	<hr>
+	<b>Template Name:</b>{{a.name}}{{a.id}}
+	<br>
+	<b>Email Subject:</b>{{a.emailSubject}}
+	<br>
+	<b>Email Body:</b>{{a.emailBody}}
+	<br>
+	<b>Date Applied:</b>{{a.dateApplied}}
+	<br>
+	<b>Resume Used:</b>{{a.resume}}
+	<br>
+	<b>Cover Letter Used:</b>{{a.coverLetter}}
+	<br>
+	<b>Plugins:</b>
+	<br/>
+		{% for k,v in a.items %}
+	<span style = 'margin=5px;'><i>{{k}}</i>: {{v}}</span>
+		{% endfor %}
+    <br/>
+	<a href="{% url 'appRemove' a.id|add:'0' %}"><button style='background-color:red;'>Remove</button></a>
+	{% endif %}
+	{% endfor %}
+	<hr>
+	<p><a href="{% url 'searchPage' %}">Apply for some more jobs.</a></p>
+{% endblock %}

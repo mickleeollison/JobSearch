@@ -1,0 +1,57 @@
+{% extends "main_template.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+   
+      <form name = "form" enctype = "multipart/form-data" 
+         action = "{% url "template.views.updateTemplate" %}" method = "POST" >{% csrf_token %}
+         
+         <div style = "max-width:100%;">
+            <center>
+			<label>Template Name:</label><br/>
+			<input type text name='tname'/><br/>
+				<br/>
+			<label>Email Subject:</label>
+			<br/>
+			<input style='width:80%;'type = "text" style = "margin-left:20%;" name = "emailSubject" />
+			<br/>
+			<br/>
+			<label>Email Body:</label>
+			<br/>
+			<textarea style='width:80%; height:10em;'type = "text" style = "margin-left:20%;" name = "emailBody" >
+				</textarea>
+            </center>
+         </div>
+	  <h4>Note: Cover Letter and Resume must a Microsoft Word document with a .docx extension!
+         <br>
+		  <h3>Upload Cover Letter</h3>
+         <div style = "max-width:470px;">
+            <center> 
+               <input type = "file" style = "margin-left:20%;" 
+                  placeholder = "Cover Letter" name = "coverLetter" />
+            </center>
+         </div>
+         
+		 <br/>
+		  <h3>Upload Resume</h3>
+		 <div style = "max-width:470px;">
+            <center> 
+               <input type = "file" style = "margin-left:20%;" 
+                  placeholder = "Resume" name = "resume" />
+            </center>
+         </div>
+			
+         <br>
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px;background-color:#4285F4; margin-top:8%; 
+                  height:35px; width:80%; margin-left:19%;" type = "submit" value = "Login" >
+                  <strong>Update</strong>
+               </button>
+               
+            </center>
+         </div>
+        
+      </form>
+{% endblock %}

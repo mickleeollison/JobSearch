@@ -1,0 +1,24 @@
+{% extends "main_template.html" %}
+{% block title %}Templates{% endblock %}
+{% block content %}
+  <h2>Current Templates</h2>
+  <p>Here is a list of all the templates you have created:</p> 
+	{% for t in templates %}
+	<hr>
+	<br>
+		{% for k,v in t.items %}
+		{% if k == "id" %}
+			{% if v == currentTemplate %}
+	<a href="{% url 'chooseTemplate' v %}"><button style='color:red;'>Current Template</button></a>
+			{% else %}
+	<a href="{% url 'chooseTemplate' v %}"><button>Choose</button></a>
+			{% endif %}
+		{% else %}
+	<span style = 'margin=5px;'><b>{{k}}</b>: {{v}}</span>
+		{% endif %}
+		{% endfor %}
+	<a href="{% url 'removeTemplate' t.id %}"><button style='background-color:red;'>Remove</button></a>
+	{% endfor %}
+	<hr>
+	<p><a href="{% url 'searchPage' %}">Apply for some more jobs.</a></p>
+{% endblock %}

@@ -1,0 +1,5 @@
+# Files uploaded by users
+documents/*
+jobsearch/media/documents/*
+#temporary storage for application Files
+empty/*

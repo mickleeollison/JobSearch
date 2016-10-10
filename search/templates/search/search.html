@@ -1,0 +1,69 @@
+{% extends "main_template.html" %}
+{% block title %}Apply{% endblock %}
+{% block content %}
+<div ng-app="myApp" ng-controller="myCtrl">
+		<h5>Logged in as: <em>{{ user }}</em></h5>
+	  <h1 style='font-family: "Times New Roman", Times, serif;'>Application Assistant!</h1>
+	  <lable style="position:absolute, top:2px, right:2px;"><a href="{% url 'applications' %}">Look at your applications.</a></lable> OR 
+	  <lable style="position:absolute, top:2px, right:2px;"><a href="{% url 'loginForm' %}">Put in your Email Credentials</a></lable>
+  	  <h3 style='font-style: italic;'>
+		  “When one door closes, another opens; but we often look so long and so regretfully upon the closed door that we do not see the one which has opened for us.”
+	  </h3>
+	{% if not plugins %}
+		<h3> Please choose a template to start applying to jobs!</h3>
+    {% else %}
+	  <form name = "form" action = "{% url "search.views.search" %}" 
+         method = "POST" id="apply">{% csrf_token %}
+		 
+		  {% for v in plugins %}
+		  
+         <div style = "max-width:470px;">
+            <center> 
+				 <span class="label label-primary">{{v}}</span>
+               <textarea type = "text" style = "width: 40em; height: 10em; margin-left:20%;" 
+				ng-model={{v}} placeholder = {{v}} name = {{v}} ></textarea>
+            </center>
+         </div>
+		 <br/>
+		  {% endfor %}
+         <div style = "max-width:470px;">
+            <center> 
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;"  
+                    value='submit' type='submit'>
+                  <strong>Submit</strong>
+               </button>
+            </center>
+         </div>
+		   </form>
+       <label>Email Subject</label>
+	   <pre style="width: 60em; 
+    border: 1px solid #000000;text-wrap: normal;">
+		{{email.subject|safe}}
+	   </pre>
+	   <label>Email Body</label>
+	   <pre style="width: 60em; 
+    border: 1px solid #000000;">
+		{{email.body|safe}}
+	   </pre>
+	   <label>Cover Letter</label>
+	   <p style="width: 60em; 
+    border: 1px solid #000000;text-wrap: normal;">
+	   	{{coverLetter|safe}}
+	</p>
+	<label>Resume:</label>
+	<p style='width: 60em; border: 1px solid #000000;text-wrap: normal;'>
+		{{resume|safe}}
+	</p>
+{% endif %}
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+});
+app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[');
+    $interpolateProvider.endSymbol(']');
+  });
+</script>
+{% endblock %}

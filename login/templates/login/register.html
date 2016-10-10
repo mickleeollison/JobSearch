@@ -1,0 +1,27 @@
+{% extends "main_template.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h1>Register Page</h1>
+      <form name = "form" action = "{% url 'login.views.register' %}" 
+         method = "POST" >{% csrf_token %}
+		 
+          <div style = "max-width:470px;">
+            <center> 
+               <input name='email' placeholder="Email" type = "text" />
+            </center>
+         </div>
+		  <div style = "max-width:470px;">
+            <center> 
+               <input name='password' placeholder="Password" type = "password" />
+            </center>
+         </div>
+         <div style = "max-width:470px;">
+            <center> 
+               <button 
+                  value = "Submit" type="submit">
+                  <strong>Submit</strong>
+               </button>
+            </center>
+         </div>
+      </form>
+{% endblock %}

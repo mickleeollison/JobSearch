@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Page Title{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+});
+angular.module('myApp', [])
+  .config(['$interpolateProvider', function ($interpolateProvider) {
+    //$interpolateProvider.startSymbol('{[');
+    //$interpolateProvider.endSymbol(']}');
+  }]);
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Application Assistant</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'searchPage' %}">Apply</a></li>
+      <li><a href="{% url 'applications' %}">Recent Applications</a></li>
+	  <li><a href="{% url 'settings' %}">Create Template</a></li>
+	  <li><a href="{% url 'templates' %}">View Templates</a></li>
+    <li><a href="{% url 'loginForm' %}">Login</a></li>
+    <li><a href="{% url 'registerForm' %}">Register</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container">
+  {% block content %}
+         Body content
+  {% endblock %}
+</div>
+
+</body>
+</html>
