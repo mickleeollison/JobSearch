@@ -13,8 +13,6 @@ import os
 
 # Create your views here.
 def searchPage(request):
-	print getTemplate(request.session['templateId'])
-	print getCurrentEmailBody(request)
 	if  not request.session.has_key('email'):
 		return HttpResponseRedirect("/login")
 	else:
