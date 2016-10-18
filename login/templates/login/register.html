@@ -10,11 +10,18 @@
                <input name='email' placeholder="Email" type = "text" />
             </center>
          </div>
-		  <div style = "max-width:470px;">
+	   <div style = "max-width:470px;">
             <center> 
                <input name='password' placeholder="Password" type = "password" />
             </center>
          </div>
+         {% if error != none %}
+         <div style = "max-width:470px;">
+            <center> 
+                  {{ error }}
+            </center>
+         </div>
+         {% endif %}
          <div style = "max-width:470px;">
             <center> 
                <button 
